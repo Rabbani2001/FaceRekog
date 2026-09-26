@@ -1,0 +1,13 @@
+services:
+
+  face-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: face-recognition-api
+
+    ports:
+      - "8000:8000"
+
+    restart: unless-stopped
