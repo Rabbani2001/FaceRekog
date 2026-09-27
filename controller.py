@@ -139,7 +139,7 @@ async def recognize_face(
 
             raise HTTPException(
                 status_code=400,
-                detail="Invalid saved_embeddings JSON."
+                detail="Invalid saved__embeddings JSON."
             )
 
 
