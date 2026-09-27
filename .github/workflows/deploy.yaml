@@ -1,0 +1,25 @@
+name: Deploy Python FR app
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        code: actions/checkout@v4
+
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ubuntu
+          key: ${{secrets.SSH_KEY}}
+          script: |
+            cd /home/ubuntu/FaceRekog
+            git pull
+            sudo docker compose up -d --build
