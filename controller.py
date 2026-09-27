@@ -11,6 +11,7 @@ app = FastAPI(title="Face Recognition API")
 @app.get("/greet")
 async def greet():
     print("Hello from server1")
+    return {"message": "Hello from server1"}
 # ============================================================
 # GENERATE EMBEDDING
 # Java sends image
