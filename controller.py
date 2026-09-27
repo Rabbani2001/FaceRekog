@@ -8,7 +8,9 @@ from service import generate_embedding, compare_embeddings
 
 app = FastAPI(title="Face Recognition API")
 
-
+@app.get("/greet")
+async def greet():
+    print("Hello from server1")
 # ============================================================
 # GENERATE EMBEDDING
 # Java sends image
