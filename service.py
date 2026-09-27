@@ -1,28 +1,40 @@
 from deepface import DeepFace
 import numpy as np
+import threading
+
+inference_lock = threading.Lock()
 
 
 def generate_embedding(image_path):
+    with inference_lock:
 
-    result = DeepFace.represent(
-        img_path=image_path,
-        model_name="Facenet",
-        detector_backend="opencv",
-        enforce_detection=True
-    )
+        result = DeepFace.represent(
+            img_path=image_path,
+            model_name="Facenet",
+            detector_backend="opencv",
+            enforce_detection=True
+        )
 
     return result[0]["embedding"]
 
 
 def cosine_similarity(a, b):
 
-    a = np.array(a)
-    b = np.array(b)
+    a = np.asarray(a, dtype=np.float32)
+    b = np.asarray(b, dtype=np.float32)
+    # a = np.array(a)
+    # b = np.array(b)
+    denominator = np.linalg.norm(a) * np.linalg.norm(b)
 
-    return np.dot(a, b) / (
-        np.linalg.norm(a) *
-        np.linalg.norm(b)
-    )
+    if denominator == 0:
+        return 0.0
+
+    return float(np.dot(a, b) / denominator)
+
+    # return np.dot(a, b) / (
+    #     np.linalg.norm(a) *
+    #     np.linalg.norm(b)
+    # )
 
 
 def compare_embeddings(
