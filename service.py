@@ -80,15 +80,6 @@ print("======================================")
 # VALIDATE EXPECTED MODEL INPUT
 # ============================================================
 
-# EXPECTED_INPUT_SHAPE = [1, 3, 112, 112]
-
-# if input_shape != EXPECTED_INPUT_SHAPE:
-#     raise RuntimeError(
-#         f"Unexpected model input shape. "
-#         f"Expected {EXPECTED_INPUT_SHAPE}, "
-#         f"but model requires {input_shape}"
-#     )
-
 
 # ============================================================
 # LOAD OPENCV FACE DETECTOR
@@ -292,11 +283,6 @@ def preprocess_face(face):
 
     return face
 
-
-# ============================================================
-# GENERATE FACE EMBEDDING
-# ============================================================
-
 # ============================================================
 # GENERATE FACE EMBEDDING
 # ============================================================
@@ -402,13 +388,7 @@ def generate_embedding(image_path):
         )
 
 
-    # --------------------------------------------------------
     # 6. Extract first face embedding
-    #
-    # Both img1 and img2 contain the same face,
-    # so we only need the first result.
-    # --------------------------------------------------------
-
     embedding = embeddings[0]
 
 
