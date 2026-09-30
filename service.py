@@ -432,7 +432,6 @@ def generate_embedding(image_path):
     return embedding.tolist()
 # ============================================================
 # COSINE SIMILARITY
-# ============================================================
 
 def cosine_similarity(a, b):
 
