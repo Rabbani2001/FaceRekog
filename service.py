@@ -48,7 +48,7 @@ print("======================================")
 print("MobileFaceNet loaded successfully")
 print("Model:", MODEL_PATH)
 
-print("\n===== MODEL INPUTS =====")
+print("\n=== MODEL INPUTS ===")
 
 for inp in model_inputs:
     print(
@@ -61,7 +61,7 @@ for inp in model_inputs:
     )
 
 
-print("\n===== MODEL OUTPUTS =====")
+print("\n=== MODEL OUTPUTS ===")
 
 for out in model_outputs:
     print(
